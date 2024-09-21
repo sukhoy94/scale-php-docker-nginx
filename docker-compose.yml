@@ -5,7 +5,7 @@ services:
     networks:
       - webnet
     deploy:
-      replicas: 3  # Uruchom 3 instancje
+      replicas: 3
     restart: always
 
   nginx:
