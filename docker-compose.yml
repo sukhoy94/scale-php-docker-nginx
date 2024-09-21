@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    build: .
+    networks:
+      - webnet
+    deploy:
+      replicas: 3  # Uruchom 3 instancje
+    restart: always
+
+  nginx:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - webnet
+    depends_on:
+      - web
+
+networks:
+  webnet:
